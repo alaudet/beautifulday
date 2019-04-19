@@ -1,11 +1,10 @@
-#!/usr/bin/env python
+#!/usr/bin/python3
 
 import requests
 from bs4 import BeautifulSoup
 
 page = requests.get('https://weather.gc.ca/city/pages/on-127_metric_e.html')
 soup = BeautifulSoup(page.content, 'html.parser')
-# soup = BeautifulSoup(open("/home/al/projects/webscraping/venv/weather_app/Timmins.html"), "html.parser")
 
 
 def get_all_conditions():
@@ -14,14 +13,18 @@ def get_all_conditions():
 
 
 def get_wind_speed():
-    '''Get the current wind speed and direction'''
+    '''Return the current wind speed and direction'''
     find_conditions_all = get_all_conditions()
-    wind_speed = find_conditions_all[11]
-    return wind_speed.get_text()
+    wind_speed_html = find_conditions_all[11]
+    wind_speed_ugly = wind_speed_html.get_text()
+    # Next line is needed as there are newlines in the string
+    # that need to be removed.
+    wind_speed = wind_speed_ugly.strip('\n')
+    return wind_speed
 
 
 def get_humidity():
-    '''Get the current atmospheric humidity'''
+    '''Return the current atmospheric humidity'''
     find_conditions_all = get_all_conditions()
     humidity = find_conditions_all[10]
     return humidity.get_text()
@@ -29,7 +32,7 @@ def get_humidity():
 
 def get_current_conditions():
     '''Return the current conditions'''
-    find_conditions_all =  get_all_conditions()
+    find_conditions_all = get_all_conditions()
     conditions = find_conditions_all[2]
     return conditions.get_text()
 
@@ -48,7 +51,6 @@ def get_city():
 
 def get_latest_report_date():
     '''return the current date and time of the latest report'''
-    date_whole_div = soup.find_all('div', class_="col-sm-10 text-center")
     todays_date_in_div = soup.find_all('dd', class_='mrgn-bttm-0')[1]
     return todays_date_in_div.get_text()
 
@@ -63,9 +65,10 @@ def main():
     wind_speed = get_wind_speed()
 
     print('{}{}'.format(city_name, latest_report))
-    print('Current Temperature  {}'.format(temperature))
-    print('Current Conditions  {}'.format(current_conditions))
-    print('Humidity is {}'.format(humidity))
-    print('Wind is {}'.format(wind_speed))
+    print('Current Temperature: {}'.format(temperature))
+    print('Current Conditions: {}'.format(current_conditions))
+    print('Humidity: {}'.format(humidity))
+    print('Wind: {}'.format(wind_speed))
+
 
 main()
