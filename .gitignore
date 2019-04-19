@@ -1,0 +1,12 @@
+*.sw*
+*.pyc
+*.csv
+dist
+*egg-info
+notebook/
+temp/
+nosetests.xml
+.noseids
+.vscode
+venv/
+notes/
