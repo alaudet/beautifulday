@@ -65,8 +65,8 @@ def main():
     wind_speed = get_wind_speed()
 
     print('{}{}'.format(city_name, latest_report))
-    print('Current Temperature: {}'.format(temperature))
-    print('Current Conditions: {}'.format(current_conditions))
+    print('Temperature: {}'.format(temperature))
+    print('Conditions: {}'.format(current_conditions))
     print('Humidity: {}'.format(humidity))
     print('Wind: {}'.format(wind_speed))
 
