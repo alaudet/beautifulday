@@ -7,6 +7,14 @@ page = requests.get('https://weather.gc.ca/city/pages/on-127_metric_e.html')
 soup = BeautifulSoup(page.content, 'html.parser')
 
 
+def get_normals():
+    '''Get the normal temperatures for this time of year'''
+    min_max_field = soup.select('td span')
+    max = min_max_field[0]
+    min = min_max_field[2]
+    return max.get_text().strip('.'), min.get_text().strip('.')
+
+
 def get_all_conditions():
     '''return multiple common weather conditions'''
     return soup.find_all('dd', class_='mrgn-bttm-0')
@@ -17,8 +25,6 @@ def get_wind_speed():
     find_conditions_all = get_all_conditions()
     wind_speed_html = find_conditions_all[11]
     wind_speed_ugly = wind_speed_html.get_text()
-    # Next line is needed as there are newlines in the string
-    # that need to be removed.
     wind_speed = wind_speed_ugly.strip('\n')
     return wind_speed
 
@@ -45,8 +51,10 @@ def get_current_temp():
 
 def get_city():
     '''Return the city name'''
-    city_find = soup.find_all('h1')[0]
-    return city_find.get_text()
+    city_find_html = soup.find_all('h1')[0]
+    city_find_ugly = city_find_html.get_text()
+    city_find = city_find_ugly.strip('\n')
+    return city_find
 
 
 def get_latest_report_date():
@@ -63,12 +71,14 @@ def main():
     current_conditions = get_current_conditions()
     humidity = get_humidity()
     wind_speed = get_wind_speed()
+    normals = get_normals()
 
-    print('{}{}'.format(city_name, latest_report))
+    print('{} - {}'.format(city_name, latest_report))
     print('Temperature: {}'.format(temperature))
     print('Conditions: {}'.format(current_conditions))
     print('Humidity: {}'.format(humidity))
     print('Wind: {}'.format(wind_speed))
+    print('Normals: High: {}  Low: {}'.format(normals[0], normals[1]))
 
 
 main()
