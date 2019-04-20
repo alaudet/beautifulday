@@ -12,6 +12,23 @@ Scraped from https://weather.gc.ca/city/pages/on-127_metric_e.html
     Wind: SSE 4 km/h
     Normals: High: 10°C  Low: -3°C
 
+
+Install
+========
+
+This is the beginning of the my_weather app.  Currently hardcoded to on-127 (Timmins) in my_weather/make_soup.py
+
+
+Install in a virtualenv.
+
+    pip install https://github.com/alaudet/my_weather/archive/devel.zip
+
+
+To run
+
+    my_weather
+
+
 This project is for learning about webscraping only
 ============================
 

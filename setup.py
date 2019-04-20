@@ -2,12 +2,12 @@ from setuptools import setup
 
 version = '0.0.1'
 
-setup(name='***appname***',
+setup(name='my_weather',
       version=version,
-      description='***desc***',
+      description='Learning about Webscraping',
       long_description=open("./README.md", "r").read(),
       classifiers=[
-          "Development Status :: 1 - Planning",
+          "Development Status :: 4 - Beta",
           "Environment :: Console",
           "Intended Audience :: End Users/Desktop",
           "Natural Language :: English",
@@ -18,10 +18,10 @@ setup(name='***appname***',
           ],
       author='Al Audet',
       author_email='alaudet@linuxnorth.org',
-      url='https://www.linuxnorth.org/***?***/',
-      download_url='https://github.com/alaudet/***/releases',
+      url='https://github.com/alaudet/my_weather',
+      download_url='https://github.com/alaudet/my_weather/releases',
       license='MIT License',
-      packages=['***'],
-      scripts=['bin/***'],
-      install_requires=['***']
+      packages=['my_weather'],
+      scripts=['bin/my_weather'],
+      install_requires=['requests', 'beautifulsoup4']
       )

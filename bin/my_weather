@@ -1,0 +1,9 @@
+#!/usr/bin/env python
+
+from my_weather import weather
+
+def main():
+    weather.main()
+
+if __name__ == '__main__':
+    main()

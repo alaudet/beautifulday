@@ -1,13 +1,9 @@
-#!/usr/bin/python3
+'''module to scrape data from weather.gc.ca page'''
 
-import requests
-from bs4 import BeautifulSoup
-
-page = requests.get('https://weather.gc.ca/city/pages/on-127_metric_e.html')
-soup = BeautifulSoup(page.content, 'html.parser')
+from my_weather import make_soup
 
 
-def get_normals():
+def get_normals(soup):
     '''Get the normal temperatures for this time of year'''
     min_max_field = soup.select('td span')
     max = min_max_field[0]
@@ -15,41 +11,41 @@ def get_normals():
     return max.get_text().strip('.'), min.get_text().strip('.')
 
 
-def get_all_conditions():
+def get_all_conditions(soup):
     '''return multiple common weather conditions'''
     return soup.find_all('dd', class_='mrgn-bttm-0')
 
 
-def get_wind_speed():
+def get_wind_speed(soup):
     '''Return the current wind speed and direction'''
-    find_conditions_all = get_all_conditions()
+    find_conditions_all = get_all_conditions(soup)
     wind_speed_html = find_conditions_all[11]
     wind_speed_ugly = wind_speed_html.get_text()
     wind_speed = wind_speed_ugly.strip('\n')
     return wind_speed
 
 
-def get_humidity():
+def get_humidity(soup):
     '''Return the current atmospheric humidity'''
-    find_conditions_all = get_all_conditions()
+    find_conditions_all = get_all_conditions(soup)
     humidity = find_conditions_all[10]
     return humidity.get_text()
 
 
-def get_current_conditions():
+def get_current_conditions(soup):
     '''Return the current conditions'''
-    find_conditions_all = get_all_conditions()
+    find_conditions_all = get_all_conditions(soup)
     conditions = find_conditions_all[2]
     return conditions.get_text()
 
 
-def get_current_temp():
+def get_current_temp(soup):
     '''Return the current temperature'''
     current__temp_find = soup.find_all('span', class_='wxo-metric-hide')[0]
     return current__temp_find.get_text()
 
 
-def get_city():
+def get_city(soup):
     '''Return the city name'''
     city_find_html = soup.find_all('h1')[0]
     city_find_ugly = city_find_html.get_text()
@@ -57,7 +53,7 @@ def get_city():
     return city_find
 
 
-def get_latest_report_date():
+def get_latest_report_date(soup):
     '''return the current date and time of the latest report'''
     todays_date_in_div = soup.find_all('dd', class_='mrgn-bttm-0')[1]
     return todays_date_in_div.get_text()
@@ -65,13 +61,14 @@ def get_latest_report_date():
 
 def main():
     '''main function'''
-    city_name = get_city()
-    latest_report = get_latest_report_date()
-    temperature = get_current_temp()
-    current_conditions = get_current_conditions()
-    humidity = get_humidity()
-    wind_speed = get_wind_speed()
-    normals = get_normals()
+    soup = make_soup.make_soup()
+    city_name = get_city(soup)
+    latest_report = get_latest_report_date(soup)
+    temperature = get_current_temp(soup)
+    current_conditions = get_current_conditions(soup)
+    humidity = get_humidity(soup)
+    wind_speed = get_wind_speed(soup)
+    normals = get_normals(soup)
 
     print('{} - {}'.format(city_name, latest_report))
     print('Temperature: {}'.format(temperature))
@@ -79,6 +76,3 @@ def main():
     print('Humidity: {}'.format(humidity))
     print('Wind: {}'.format(wind_speed))
     print('Normals: High: {}  Low: {}'.format(normals[0], normals[1]))
-
-
-main()
