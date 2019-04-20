@@ -1,10 +1,22 @@
 Fun teaching myself webscraping.  Info is from weather.gc.ca
 
-If you really need to manipulate weather data you should probably go here before getting too far in the
-weeds with scraping.
+Currently provides the following output
+=====================
 
-Government of Canada makes everything available for use.
+Scraped from https://weather.gc.ca/city/pages/on-127_metric_e.html
 
+    Timmins, ON - 7:00 AM EDT Saturday 20 April 2019
+    Temperature: -3°C
+    Conditions: Sunny
+    Humidity: 84%
+    Wind: SSE 4 km/h
+    Normals: High: 10°C  Low: -3°C
+
+This project is for learning about webscraping only
+============================
+
+If you really need to manipulate weather data you should probably go to the Government of 
+Canada Weather Website first. They make everything available for use.
 
 http://dd.weather.gc.ca/citypage_weather/docs/README_citypage_weather.txt
 
