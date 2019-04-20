@@ -1,4 +1,5 @@
 Changelog
 =========
 
+v0.0.3 - add option to pass city code to my_weather
 v0.0.1 - initial version.  returns Todays Timmins,ON weather details only
