@@ -5,7 +5,7 @@ Info scraped from https://weather.gc.ca/
 Install
 ========
 
-This is the beginning of the my_weather app.  Currently hardcoded to on-127 (Timmins) in my_weather/make_soup.py
+This is the beginning of the my_weather app.  
 
 
 Install in a virtualenv.
