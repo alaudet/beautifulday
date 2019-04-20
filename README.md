@@ -9,8 +9,12 @@ This is the beginning of the my_weather app.
 
 
 Install in a virtualenv.
-
+    
+    for devel branch
     pip install https://github.com/alaudet/my_weather/archive/devel.zip
+
+    for master branch
+    pip install https://github.com/alaudet/my_weather/archive/master.zip
 
 
 Usage

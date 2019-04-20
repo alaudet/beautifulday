@@ -3,8 +3,8 @@
 import sys
 from my_weather import weather
 
-weather_code = sys.argv[1]
 if len(sys.argv) == 2:
+    weather_code = sys.argv[1]
     weather.main(weather_code)
 else:
     print('enter 1 city code from weather.gc.ca')

@@ -44,7 +44,11 @@ def get_city(soup):
 
 def get_latest_report_date(soup):
     '''return the current date and time of the latest report'''
-    todays_date_in_div = soup.find_all('dd', class_='mrgn-bttm-0')[1]
+    try:
+        todays_date_in_div = soup.find_all('dd', class_='mrgn-bttm-0')[1]
+    except IndexError:
+        print('Invalid City Code. Get code at weather.gc.ca')
+        exit(0)
     return todays_date_in_div.get_text()
 
 
