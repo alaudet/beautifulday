@@ -10,4 +10,3 @@ url = 'https://weather.gc.ca/city/pages/{}_metric_e.html'.format(code)
 def make_soup():
     page = requests.get(url)
     return BeautifulSoup(page.content, 'html.parser')
-    print(page.content)

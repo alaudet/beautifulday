@@ -16,27 +16,16 @@ def get_all_conditions(soup):
     return soup.find_all('dd', class_='mrgn-bttm-0')
 
 
-def get_wind_speed(soup):
-    '''Return the current wind speed and direction'''
+def get_current_conditions(soup):
+    '''Return a tuple of the current conditions
+       (sky, humidity, wind_speed)'''
     find_conditions_all = get_all_conditions(soup)
+    sky = find_conditions_all[2]
+    humidity = find_conditions_all[10]
     wind_speed_html = find_conditions_all[11]
     wind_speed_ugly = wind_speed_html.get_text()
     wind_speed = wind_speed_ugly.strip('\n')
-    return wind_speed
-
-
-def get_humidity(soup):
-    '''Return the current atmospheric humidity'''
-    find_conditions_all = get_all_conditions(soup)
-    humidity = find_conditions_all[10]
-    return humidity.get_text()
-
-
-def get_current_conditions(soup):
-    '''Return the current conditions'''
-    find_conditions_all = get_all_conditions(soup)
-    conditions = find_conditions_all[2]
-    return conditions.get_text()
+    return sky.get_text(), humidity.get_text(), wind_speed
 
 
 def get_current_temp(soup):
@@ -66,13 +55,11 @@ def main():
     latest_report = get_latest_report_date(soup)
     temperature = get_current_temp(soup)
     current_conditions = get_current_conditions(soup)
-    humidity = get_humidity(soup)
-    wind_speed = get_wind_speed(soup)
     normals = get_normals(soup)
 
     print('{} - {}'.format(city_name, latest_report))
     print('Temperature: {}'.format(temperature))
-    print('Conditions: {}'.format(current_conditions))
-    print('Humidity: {}'.format(humidity))
-    print('Wind: {}'.format(wind_speed))
+    print('Conditions: {}'.format(current_conditions[0]))
+    print('Humidity: {}'.format(current_conditions[1]))
+    print('Wind: {}'.format(current_conditions[2]))
     print('Normals: High: {}  Low: {}'.format(normals[0], normals[1]))

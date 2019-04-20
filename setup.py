@@ -1,6 +1,6 @@
 from setuptools import setup
 
-version = '0.0.1'
+version = '0.0.2'
 
 setup(name='my_weather',
       version=version,
@@ -13,7 +13,7 @@ setup(name='my_weather',
           "Natural Language :: English",
           "Operating System :: POSIX :: Linux",
           "Programming Language :: Python :: 3",
-          "Topic :: Multimedia :: Graphics :: Graphics Conversion",
+          "Topic :: Utilities",
           "License :: OSI Approved :: MIT License",
           ],
       author='Al Audet',
