@@ -52,9 +52,8 @@ def get_latest_report_date(soup):
     return todays_date_in_div.get_text()
 
 
-def main(code):
+def main(soup):
     '''main function'''
-    soup = make_soup.make_soup(code)
     city_name = get_city(soup)
     latest_report = get_latest_report_date(soup)
     temperature = get_current_temp(soup)

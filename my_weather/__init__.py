@@ -2,7 +2,7 @@
 
 import sys
 import argparse
-from my_weather import weather, weather_extended
+from my_weather import make_soup, weather, weather_extended
 
 
 def get_args():
@@ -33,10 +33,9 @@ def get_args():
 def main():
     '''Main function'''
     code, extended = get_args()
+    soup = make_soup.make_soup(code)
     if len(sys.argv) == 3:
-        weather.main(code)
+        weather.main(soup)
     elif code and extended:
-        weather.main(code)
-        weather_extended.main(code)
-    else:
-        print('something went wrong, check your arguments')
+        weather.main(soup)
+        weather_extended.main(soup)
