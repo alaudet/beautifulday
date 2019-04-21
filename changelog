@@ -1,6 +1,10 @@
 Changelog
 =========
 
+v0.1 - add argument parsing and extended forecasts
+
 v0.0.3.1 - add exception handling for invalid codes
+
 v0.0.3 - add option to pass city code to my_weather
+
 v0.0.1 - initial version.  returns Todays Timmins,ON weather details only

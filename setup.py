@@ -1,6 +1,6 @@
 from setuptools import setup
 
-version = '0.1a'
+version = '0.1'
 
 setup(name='my_weather',
       version=version,
