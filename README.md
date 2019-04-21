@@ -1,19 +1,31 @@
-Fun teaching myself webscraping.  Info is from weather.gc.ca
+Purpose of Program
+===========
+
+Print out simple or extended weather reports for any Canadian city to a console.
+
+Web scraping is not the best approach for this problem but is a good skill to have.  Using it for this will require that I update it every time Weather Canada changes the look and feel of their site.  Since this is not a skill I will use often it will force me to go back and fix it so that I can use what I have learned easily.
 
 Info scraped from https://weather.gc.ca/
+
+
+Contributing
+==========
+
+I welcome contributions from others wanting to learn about Webscraping.  Things here can always be improved.
+
+Please do pull requests from the __devel__ branch.  Discussed proposed changes in the __Issue Tracker__ prior to sending a big pull request.
+
+Code should follow __PEP-8__ standards as much as possible.  Also please use doctrings for all functions and classes you want to add.  It will help others that are learning as well.
 
 Install
 ========
 
-This is the beginning of the my_weather app.  
-
-
 Install in a virtualenv.
     
-    for devel branch
+    for the latest devel branch
     pip install https://github.com/alaudet/my_weather/archive/devel.zip
 
-    for master branch
+    for the latest stable master branch
     pip install https://github.com/alaudet/my_weather/archive/master.zip
 
 
@@ -27,6 +39,7 @@ The code is in the url of your weather report.
 __help menu__
 
     my_weather -h
+
     usage: my_weather [-h] -c CODE [-e]
 
     Use argparsing to allow more control over output
@@ -36,9 +49,9 @@ __help menu__
     -c CODE, --code CODE  Enter the city code from weather.gc.ca
     -e, --extended        Add the extended forecast
 
-__Example 1__
+__Example 1 - Timmins ON, simple forecast__
 
-my_weather -c on-127
+    my_weather -c on-127
 
     Timmins, ON - 9:00 PM EDT Saturday 20 April 2019
     Temperature: 5°C
@@ -48,36 +61,36 @@ my_weather -c on-127
     Normals: High: 10°C  Low: -3°C
 
 
-__Example 2__
+__Example 2 Halifax NS, extended forecast__
 
-my_weather c- on-143 -e
+    my_weather -c ns-19 -e
 
-    Toronto, ON - 9:42 PM EDT Saturday 20 April 2019
-    Temperature: 7°C
-    Conditions: Cloudy
-    Humidity: 91%
-    Wind: SSE 10 km/h
-    Normals: High: 13°C  Low: 4°C
+    Halifax, NS - 8:00 AM ADT Sunday 21 April 2019
+    Temperature: 12°C
+    Conditions: Light Drizzle
+    Humidity: 100%
+    Wind: SSW 27  gust 48 km/h
+    Normals: High: 10°C  Low: 1°C
     ---Extended Forecast---
-    Tonight - Periods of rain or drizzle ending late this evening then cloudy with 60 percent chance of drizzle. Risk of a thunderstorm early this evening. Fog patches developing late this evening. Wind northeast 20 km/h becoming light this evening. Low 6.
-    Sun, 21 Apr - Mainly cloudy. 40 percent chance of drizzle in the morning and early in the afternoon. Fog patches dissipating in the morning. High 16 except 11 near Lake Ontario. UV index 5 or moderate.
-     Night - Partly cloudy. Low 6.
-    Mon, 22 Apr - A mix of sun and cloud with 40 percent chance of showers. High 16.
-     Night - Cloudy periods with 40 percent chance of showers. Low 9.
-    Tue, 23 Apr - Cloudy with 40 percent chance of showers. High 16.
-     Night - Cloudy with 60 percent chance of showers. Low 7.
-    Wed, 24 Apr - Cloudy with 30 percent chance of showers. High 12.
-     Night - Clear. Low plus 4.
-    Thu, 25 Apr - Sunny. High 16.
-     Night - Cloudy periods. Low 7.
-    Fri, 26 Apr - Cloudy with 40 percent chance of showers. High 13.
+    Today - Cloudy. 30 percent chance of drizzle early this morning. Showers or drizzle beginning this morning. Fog patches. Amount 2 mm. Wind south 20 km/h gusting to 40. High 16 except 9 along parts of the coast. UV index 3 or moderate.
+    Tonight - Showers or drizzle. Fog patches. Amount 2 mm. Wind south 20 km/h gusting to 40. Low 9.
+    Mon, 22 Apr - Periods of rain. Fog patches. Amount 10 to 15 mm. Wind south 20 km/h becoming light in the morning. High 12 except 18 inland.
+    Night - Periods of rain. Low plus 4.
+    Tue, 23 Apr - Periods of rain. High 6.
+    Night - Periods of rain. Low plus 3.
+    Wed, 24 Apr - Rain. High 7.
+    Night - Cloudy with 30 percent chance of showers. Low plus 2.
+    Thu, 25 Apr - Rain. High plus 5.
+    Night - Cloudy. Low plus 3.
+    Fri, 26 Apr - Cloudy. High 7.
+    Night - Cloudy with 30 percent chance of showers. Low plus 2.
+
 
 
 This project is for learning about webscraping only
 ============================
 
-If you really need to manipulate weather data you should probably go to the Government of 
-Canada Weather Website first. They make everything available for use.
+If you really need to manipulate weather data you should probably go to the Government of Canada Weather website first. They make xml files available for use and would be a better option for building a web app.  More info at the following link.
 
 http://dd.weather.gc.ca/citypage_weather/docs/README_citypage_weather.txt
 
