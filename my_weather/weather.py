@@ -51,7 +51,7 @@ def get_alerts(soup):
         alert2 = multiple_alerts.pop()
         return alert1.get_text(), alert2.get_text() 
     else:
-        return soup.select('a div')[1].get_text()
+        return single_alert
 
 def get_city(soup):
     '''Return the city name'''
