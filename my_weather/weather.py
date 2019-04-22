@@ -3,6 +3,13 @@
 from my_weather import make_soup
 
 
+def sun(soup):
+    '''Get the sunrise and sunset values for today'''
+    sun = soup.select('td')
+    sunset = sun.pop()
+    sunrise = sun.pop()
+    return sunrise.get_text(), sunset.get_text()
+
 def get_normals(soup):
     '''Get the normal temperatures for this time of year'''
     min_max_field = soup.select('td span')
@@ -33,6 +40,18 @@ def get_current_temp(soup):
     current__temp_find = soup.find_all('span', class_='wxo-metric-hide')[0]
     return current__temp_find.get_text()
 
+def get_alerts(soup):
+    no_alerts = soup.select('div h2')[4]
+    multiple_alerts = soup.find_all('div', class_='col-xs-10 text-center')
+    single_alert = soup.select('a div')[1].get_text()
+    if no_alerts.get_text() == 'No Alerts in effect':
+        return 'No Alerts in effect'
+    elif len(multiple_alerts) > 3:
+        alert1 = multiple_alerts.pop()
+        alert2 = multiple_alerts.pop()
+        return alert1.get_text(), alert2.get_text() 
+    else:
+        return soup.select('a div')[1].get_text()
 
 def get_city(soup):
     '''Return the city name'''
@@ -55,14 +74,22 @@ def get_latest_report_date(soup):
 def main(soup):
     '''main function'''
     city_name = get_city(soup)
+    alerts = get_alerts(soup)
     latest_report = get_latest_report_date(soup)
     temperature = get_current_temp(soup)
     current_conditions = get_current_conditions(soup)
     normals = get_normals(soup)
+    sunrise_sunset = sun(soup)
 
     print('{} - {}'.format(city_name, latest_report))
+    if type(alerts) == str:
+        print('{}'.format(alerts))
+    else:
+        print('{}'.format(alerts[0]))
+        print('{}'.format(alerts[1]))
     print('Temperature: {}'.format(temperature))
     print('Conditions: {}'.format(current_conditions[0]))
     print('Humidity: {}'.format(current_conditions[1]))
     print('Wind: {}'.format(current_conditions[2]))
     print('Normals: High: {}  Low: {}'.format(normals[0], normals[1]))
+    print('Sunrise: {}  Sunset:{}'.format(sunrise_sunset[0], sunrise_sunset[1]))
