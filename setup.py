@@ -1,6 +1,6 @@
 from setuptools import setup
 
-version = '0.1.1'
+version = '0.2.0B'
 
 setup(name='my_weather',
       version=version,
@@ -18,7 +18,7 @@ setup(name='my_weather',
           ],
       author='Al Audet',
       author_email='alaudet@linuxnorth.org',
-      url='https://github.com/alaudet/my_weather',
+      url='https://www.linuxnorth.org/myweather/',
       download_url='https://github.com/alaudet/my_weather/releases',
       license='MIT License',
       packages=['my_weather'],
