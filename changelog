@@ -1,6 +1,7 @@
 Changelog
 =========
 
+v0.2.1 - Fix Weather Alerts
 v0.1.1 - Adds extra fields to simple forecast (alerts, sunrise/sunset)
 
 v0.1 - add argument parsing and extended forecasts

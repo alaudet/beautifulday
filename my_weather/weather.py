@@ -44,7 +44,7 @@ def get_current_temp(soup):
 
 def get_alerts(soup):
     """Return Weather Alerts"""
-    no_alerts = soup.select("div h2")[5]
+    no_alerts = soup.select("div h2")[3]
     multiple_alerts = soup.find_all("div", class_="col-xs-10 text-center")
     single_alert = soup.select("a div")[1].get_text()
     if no_alerts.get_text() == "No Alerts in effect":
