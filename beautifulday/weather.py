@@ -1,6 +1,6 @@
 """module to scrape data from weather.gc.ca page"""
 
-from my_weather import make_soup
+from beautifulday import make_soup
 
 
 def sun(soup):

@@ -1,42 +1,30 @@
-Purpose of Program
-===========
+# Purpose of Program
 
 Print out simple or extended weather reports for any Canadian city to a console.
 
 Web scraping is not the best approach for this problem but is a good skill to have.  Using it for this will require that I update it every time Weather Canada changes the look and feel of their site.  Since this is not a skill I will use often it will force me to go back and fix it so that I can use what I have learned easily.
 
-Info scraped from https://weather.gc.ca/
+## Contributing
 
-
-Contributing
-==========
 
 I welcome contributions from others wanting to learn about Webscraping.  Things here can always be improved.
 
-Please do pull requests from the __devel__ branch.  Discussed proposed changes in the __Issue Tracker__ prior to sending a big pull request.
+Please do pull requests from the *devel* branch.  Discussed proposed changes in the *Issue Tracker* prior to sending a big pull request.
 
-Code should follow __PEP-8__ standards as much as possible.  Also please use doctrings for all functions and classes you want to add.  It will help others that are learning as well.
+Code should follow *PEP-8* standards as much as possible.  Also please use doctrings for all functions and classes you want to add.  It will help others that are learning as well.
 
-Install
-========
+## Install
 
-Install in a virtualenv.
-    
-    for the latest devel branch
-    pip install https://github.com/alaudet/my_weather/archive/devel.zip
+    sudo pip3 install beautifulday
 
-    for the latest stable master branch
-    pip install https://github.com/alaudet/my_weather/archive/master.zip
+## Usage
 
-
-Usage
-=====
 
 Find the weather code for your city by visiting  https://weather.gc.ca/
 
 The code is in the url of your weather report.
 
-__help menu__
+### help menu
 
     my_weather -h
 
@@ -49,7 +37,7 @@ __help menu__
     -c CODE, --code CODE  Enter the city code from weather.gc.ca
     -e, --extended        Add the extended forecast
 
-__Example 1 - Sudbury ON, simple forecast__
+### Example 1 - Sudbury ON, simple forecast
 
     my_weather -c on-40
 
@@ -63,13 +51,13 @@ __Example 1 - Sudbury ON, simple forecast__
     Sunrise: 6:25 EDT  Sunset:20:20 EDT
 
 
-__Example 2 - Timmins ON, simple forecast (includes weather alerts)__
+### Example 2 - Timmins ON, simple forecast (includes weather alerts)
 
     my_weather -c on-127
 
     Timmins, ON - 7:00 AM EDT Monday 22 April 2019
-    FREEZING RAIN WARNING 
-    RAINFALL WARNING 
+    FREEZING RAIN WARNING
+    RAINFALL WARNING
     Temperature: -2°C
     Conditions: Light Freezing Rain
     Humidity: 88%
@@ -79,12 +67,12 @@ __Example 2 - Timmins ON, simple forecast (includes weather alerts)__
 
 
 
-__Example 3 Halifax NS, extended forecast__
+### Example 3 Halifax NS, extended forecast
 
     my_weather -c ns-19 -e
 
     Halifax, NS - 8:38 AM ADT Monday 22 April 2019
-    SPECIAL WEATHER STATEMENT 
+    SPECIAL WEATHER STATEMENT
     Temperature: 11°C
     Conditions: Light Rain
     Humidity: 100%
@@ -106,16 +94,11 @@ __Example 3 Halifax NS, extended forecast__
     Night - Cloudy periods with 60 percent chance of showers. Low plus 1.
 
 
+## Info
 
 This project is for learning about webscraping only
-============================
+
 
 If you really need to manipulate weather data you should probably go to the Government of Canada Weather website first. They make xml files available for use and would be a better option for building a web app.  More info at the following link.
 
-http://dd.weather.gc.ca/citypage_weather/docs/README_citypage_weather.txt
-
-
-Weather Canada has a fairly permissive license with a few conditions.
-
-
-http://dd.weather.gc.ca/doc/LICENCE_GENERAL.txt
+[Environment and Climate Change Canada](https://eccc-msc.github.io/open-data/msc-data/citypage-weather/readme_citypageweather-datamart_en/)
