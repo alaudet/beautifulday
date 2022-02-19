@@ -26,9 +26,9 @@ The code is in the url of your weather report.
 
 ### help menu
 
-    my_weather -h
+    beautifulday -h
 
-    usage: my_weather [-h] -c CODE [-e]
+    usage: beautifulday [-h] -c CODE [-e]
 
     Use argparsing to allow more control over output
 
@@ -39,7 +39,7 @@ The code is in the url of your weather report.
 
 ### Example 1 - Sudbury ON, simple forecast
 
-    my_weather -c on-40
+    beautifulday -c on-40
 
     Greater Sudbury, ON - 7:00 AM EDT Monday 22 April 2019
     No Alerts in effect
@@ -53,7 +53,7 @@ The code is in the url of your weather report.
 
 ### Example 2 - Timmins ON, simple forecast (includes weather alerts)
 
-    my_weather -c on-127
+    beautifulday -c on-127
 
     Timmins, ON - 7:00 AM EDT Monday 22 April 2019
     FREEZING RAIN WARNING
@@ -69,7 +69,7 @@ The code is in the url of your weather report.
 
 ### Example 3 Halifax NS, extended forecast
 
-    my_weather -c ns-19 -e
+    beautifulday -c ns-19 -e
 
     Halifax, NS - 8:38 AM ADT Monday 22 April 2019
     SPECIAL WEATHER STATEMENT
